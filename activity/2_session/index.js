@@ -71,7 +71,19 @@ let userLogin = new Login("admin", "passwd")
 userLogin.login();
 
 // Ejercicio 5
+ 
+  const elemtSuccess = document.getElementById('loginSuccess')
+  elemtSuccess.addEventListener('click', (event) => {
+    let userLogin = new Login("admin", "passwd")
+    userLogin.login();;
+  });
 
+  const elemtFailure = document.getElementById('loginFailure')
+  elemtFailure.addEventListener('click', (event) => {
+    let userLogin = new Login("adminFailure", "passwdFailure")
+    userLogin.login();;
+  });
+ 
 // Ejercicio 6
 
 let loginWitUsername = (username, password) => {
@@ -85,3 +97,27 @@ let loginWitUsername = (username, password) => {
       }, 200);
     });
 };
+
+const elemtAsycSuccess = document.getElementById('loginSuccessAsync')
+elemtAsycSuccess.addEventListener('click', async() => {  
+  loginWitUsername("admin", "passwd").then((resolve)=>{
+    console.log(resolve)
+  })
+    .catch((rejected)=>{
+    
+    console.log(rejected);
+  })
+}
+);
+
+const elemtAsycFailure = document.getElementById('loginFailureAsync')
+elemtAsycFailure.addEventListener('click', async( ) => {
+  loginWitUsername("a", "p").then((resolve)=>{
+    console.log(resolve);
+  })
+  .catch((rejected)=>{
+    
+    console.log(rejected);
+  })
+
+});
